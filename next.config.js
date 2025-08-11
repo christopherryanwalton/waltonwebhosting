@@ -10,7 +10,7 @@ const nextConfig = {
   
   // Environment variables that are safe to expose
   env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://waltonwebhosting.com',
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://hosting.waltontech.work',
   }
 }
 
