@@ -9,297 +9,12 @@ body {
   background: #1a1a2e;
   color: #f3f4f6;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-/* Datacenter Doors Loading Animation */
-.loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0a0a0f;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.loader-wrapper.loaded {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition-delay: 2s;
-}
-
-.datacenter-scene {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  perspective: 1000px;
-  overflow: hidden;
-}
-
-.door-frame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 400px;
-  display: flex;
-}
-
-.door {
-  width: 50%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 2s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.left-door {
-  transform-origin: left center;
-  background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
-  border-right: 2px solid #7c3aed;
-  box-shadow: inset 0 0 50px rgba(124, 58, 237, 0.2);
-}
-
-.right-door {
-  transform-origin: right center;
-  background: linear-gradient(135deg, #2a2a3e 0%, #1e1e2e 100%);
-  border-left: 2px solid #7c3aed;
-  box-shadow: inset 0 0 50px rgba(124, 58, 237, 0.2);
-}
-
-.loader-wrapper.loaded .left-door {
-  transform: rotateY(-120deg);
-}
-
-.loader-wrapper.loaded .right-door {
-  transform: rotateY(120deg);
-}
-
-.door-panel {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: linear-gradient(180deg, 
-    rgba(124, 58, 237, 0.1) 0%, 
-    rgba(124, 58, 237, 0.05) 50%, 
-    rgba(124, 58, 237, 0.1) 100%);
-  border: 1px solid rgba(124, 58, 237, 0.3);
-}
-
-.server-rack {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.server {
-  width: 100%;
-  height: 40px;
-  background: linear-gradient(90deg, #16213e 0%, #1a1a2e 50%, #16213e 100%);
-  border: 1px solid rgba(124, 58, 237, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-.server::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  background: #00ff00;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00ff00;
-  animation: blink 2s infinite;
-}
-
-.server::after {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 2px;
-  background: repeating-linear-gradient(
-    90deg,
-    #7c3aed,
-    #7c3aed 3px,
-    transparent 3px,
-    transparent 6px
-  );
-  animation: dataFlow 1s linear infinite;
-}
-
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
-}
-
-@keyframes dataFlow {
-  0% { transform: translateY(-50%) translateX(0); }
-  100% { transform: translateY(-50%) translateX(6px); }
-}
-
-.door-handle {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 40px;
-  background: linear-gradient(180deg, #7c3aed, #a78bfa);
-  border-radius: 5px;
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
-}
-
-.left-door .door-handle {
-  right: 20px;
-}
-
-.right-door .door-handle {
-  left: 20px;
-}
-
-.door-text {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 3px;
-  color: #7c3aed;
-  text-shadow: 0 0 20px rgba(124, 58, 237, 0.8);
-}
-
-.center-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  opacity: 0;
-  animation: fadeIn 1s ease 0.5s forwards;
-}
-
-.logo-glow {
-  font-size: 4rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 40px rgba(124, 58, 237, 0.5);
-  animation: pulse 2s ease infinite;
-}
-
-.tagline {
-  font-size: 0.9rem;
-  color: #9ca3af;
-  margin-top: 1rem;
-  letter-spacing: 2px;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.floor-grid {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background-image: 
-    linear-gradient(rgba(124, 58, 237, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 58, 237, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  transform: perspective(200px) rotateX(60deg);
-  transform-origin: bottom;
-  opacity: 0.5;
-}
-
-/* Main Content Animation */
-.main-content {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-}
-
-.main-content.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Enhanced Hero Section */
-.hero {
-  padding: 5rem 0;
-  text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-attachment: fixed;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.1), 
-    transparent);
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-.hero-title {
-  animation: slideInUp 1s ease;
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Navigation */
@@ -339,6 +54,14 @@ body {
   color: #f3f4f6;
 }
 
+/* Hero Section */
+.hero {
+  padding: 5rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+}
+
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -357,32 +80,14 @@ h1 {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: left 0.5s;
-}
-
-.btn:hover::before {
-  left: 100%;
+  transition: transform 0.3s;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
 }
 
-/* Enhanced Services */
+/* Services */
 .services {
   padding: 4rem 0;
   background: #16213e;
@@ -400,53 +105,16 @@ h2 {
   gap: 2rem;
 }
 
-.service-card {
-  animation: fadeInUp 1s ease backwards;
-  transform-origin: center;
-  transition: all 0.3s;
-}
-
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.2s; }
-.service-card:nth-child(3) { animation-delay: 0.3s; }
-.service-card:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.service-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
-  animation: bounce 2s ease infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
 .card {
   background: rgba(31, 41, 55, 0.8);
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid rgba(124, 58, 237, 0.2);
-  transition: all 0.3s;
-  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
-  border-color: #7c3aed;
+  transform: translateY(-5px);
 }
 
 .card h3 {
@@ -457,7 +125,6 @@ h2 {
 /* About Page */
 .about-content {
   padding: 4rem 0;
-  animation: fadeIn 1s ease;
 }
 
 .about-section {
@@ -510,17 +177,8 @@ h2 {
   margin-top: 4rem;
 }
 
-/* Mobile Responsive */
+/* Responsive */
 @media (max-width: 768px) {
-  .door-frame {
-    width: 90%;
-    height: 300px;
-  }
-  
-  .logo-glow {
-    font-size: 3rem;
-  }
-  
   h1 {
     font-size: 2rem;
   }
@@ -531,13 +189,5 @@ h2 {
   
   .nav-links {
     gap: 1rem;
-  }
-  
-  .server-rack {
-    width: 70%;
-  }
-  
-  .door-text {
-    font-size: 1rem;
   }
 }
