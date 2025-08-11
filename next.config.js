@@ -5,7 +5,7 @@ const nextConfig = {
   
   // Your domain configuration
   images: {
-    domains: ['waltonwebhosting.com'],
+    domains: ['waltontech.work'],
   },
   
   // Environment variables that are safe to expose
