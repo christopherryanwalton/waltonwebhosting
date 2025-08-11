@@ -1,44 +1,33 @@
-import { NextResponse } from 'next/server'
-
 export async function POST(request) {
   try {
-    const data = await request.json()
-    
-    // Validate required fields
-    if (!data.name || !data.email || !data.subject || !data.message) {
-      return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
-        { status: 400 }
-      )
+    const formData = await request.formData()
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      subject: formData.get('subject'),
+      message: formData.get('message')
     }
-
-    // Log the contact form submission (for now)
-    console.log('Contact form submission:', {
-      from: `${data.name} <${data.email}>`,
-      company: data.company || 'Not provided',
-      subject: data.subject,
-      message: data.message,
-      timestamp: new Date().toISOString()
-    })
-
-    // TODO: Add your email service integration here
-    // Example with Mailgun:
-    // const mailgun = require('mailgun-js')({
-    //   apiKey: process.env.MAILGUN_API_KEY,
-    //   domain: process.env.MAILGUN_DOMAIN
-    // })
-    // await mailgun.messages().send(emailData)
-
-    // For now, just return success
-    return NextResponse.json({ 
-      success: true,
-      message: 'Email sent successfully' 
+    
+    // Log the submission
+    console.log('Contact form submission:', data)
+    
+    // TODO: Add email service here
+    
+    // Redirect back to contact page with success
+    return new Response(null, {
+      status: 302,
+      headers: {
+        'Location': '/contact?success=true'
+      }
     })
   } catch (error) {
-    console.error('Error processing contact form:', error)
-    return NextResponse.json(
-      { success: false, error: 'Internal server error' },
-      { status: 500 }
-    )
+    console.error('Error:', error)
+    return new Response(null, {
+      status: 302,
+      headers: {
+        'Location': '/contact?error=true'
+      }
+    })
   }
 }
