@@ -2,7 +2,7 @@ export default function About() {
   const values = [
     { icon: '💰', title: 'Cost-Conscious', description: 'Competitive pricing without hidden fees' },
     { icon: '🛠️', title: 'Easy Setup', description: 'Get online quickly with our intuitive platform' },
-    { icon: '🔒', title: 'Secure & Reliable', description: 'Your data is safe with our robust security measures' },
+    { icon: '🔒', title: 'Secure & Reliable', description: 'Your data is safe with our robust security' },
     { icon: '📈', title: 'Scalable Solutions', description: 'Grow your hosting as your business expands' },
     { icon: '🤝', title: 'Personal Support', description: 'Real people who care about your success' },
     { icon: '🚀', title: 'Innovation', description: 'Always improving with the latest technologies' }
@@ -23,8 +23,8 @@ export default function About() {
             <h2>Who We Are</h2>
             <p>
               Walton Web Hosting (WWH) is a newer company dedicated to making web hosting accessible, 
-              affordable, and reliable for businesses of all sizes. We understand that in today's digital age, 
-              having a strong online presence is crucial for success, but it shouldn't break the bank.
+              affordable, and reliable for businesses of all sizes. We understand that in today&apos;s digital age, 
+              having a strong online presence is crucial for success, but it shouldn&apos;t break the bank.
             </p>
             <p>
               Founded with a vision to democratize web hosting, we specialize in providing cost-conscious 
@@ -59,13 +59,13 @@ export default function About() {
           <div className="about-section">
             <h2>Looking Ahead</h2>
             <p>
-              As we grow, we're excited to expand our services to include physical server hosting and 
-              more advanced solutions. We're committed to staying at the forefront of hosting technology 
+              As we grow, we&apos;re excited to expand our services to include physical server hosting and 
+              more advanced solutions. We&apos;re committed to staying at the forefront of hosting technology 
               while maintaining our core values of affordability and accessibility.
             </p>
             <p>
               Join us on our journey to make professional web hosting available to everyone. Whether 
-              you're launching your first website or migrating an existing application, WWH is here 
+              you&apos;re launching your first website or migrating an existing application, WWH is here 
               to support your digital success.
             </p>
           </div>
