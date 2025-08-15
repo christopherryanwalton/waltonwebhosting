@@ -1,3 +1,5 @@
+import { NextResponse } from 'next/server'
+
 export async function POST(request) {
   try {
     const formData = await request.formData()
@@ -12,22 +14,13 @@ export async function POST(request) {
     // Log the submission
     console.log('Contact form submission:', data)
     
-    // TODO: Add email service here
+    // TODO: Add your email service integration here
+    // For Mailgun, SendGrid, etc.
     
-    // Redirect back to contact page with success
-    return new Response(null, {
-      status: 302,
-      headers: {
-        'Location': '/contact?success=true'
-      }
-    })
+    // Redirect back to contact page with success message
+    return NextResponse.redirect(new URL('/contact?success=true', request.url))
   } catch (error) {
     console.error('Error:', error)
-    return new Response(null, {
-      status: 302,
-      headers: {
-        'Location': '/contact?error=true'
-      }
-    })
+    return NextResponse.redirect(new URL('/contact?error=true', request.url))
   }
 }
