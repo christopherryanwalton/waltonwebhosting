@@ -14,7 +14,7 @@ export default function Contact() {
           We&apos;d love to hear from you! Fill out the form below and our team will get back to you within 24 hours.
         </p>
         
-        <form className="contact-form" action="/api/contact" method="POST">
+        <form className="contact-form" method="POST" action="/api/contact">
           <div className="form-group">
             <label htmlFor="name">Your Name *</label>
             <input
