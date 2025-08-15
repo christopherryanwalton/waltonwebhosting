@@ -2,7 +2,7 @@ export default function About() {
   const values = [
     { icon: '💰', title: 'Cost-Conscious', description: 'Competitive pricing without hidden fees' },
     { icon: '🛠️', title: 'Easy Setup', description: 'Get online quickly with our intuitive platform' },
-    { icon: '🔒', title: 'Secure & Reliable', description: 'Your data is safe with our robust security' },
+    { icon: '🔒', title: 'Secure & Reliable', description: 'Your data is safe with our robust security measures' },
     { icon: '📈', title: 'Scalable Solutions', description: 'Grow your hosting as your business expands' },
     { icon: '🤝', title: 'Personal Support', description: 'Real people who care about your success' },
     { icon: '🚀', title: 'Innovation', description: 'Always improving with the latest technologies' }
