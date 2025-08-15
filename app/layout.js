@@ -10,15 +10,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <nav className="navbar">
-          <div className="nav-container">
-            <a href="/" className="nav-logo">
-              <span className="logo-text">WWH</span>
-            </a>
-            <ul className="nav-links">
-              <li><a href="/" className="nav-link">Home</a></li>
-              <li><a href="/about" className="nav-link">About</a></li>
-              <li><a href="/contact" className="nav-link">Contact</a></li>
-            </ul>
+          <div className="container">
+            <div className="nav-content">
+              <a href="/" className="logo">
+                <span className="logo-text">WWH</span>
+              </a>
+              <div className="nav-links">
+                <a href="/" className="nav-link">Home</a>
+                <a href="/about" className="nav-link">About</a>
+                <a href="/contact" className="nav-link">Contact</a>
+              </div>
+            </div>
           </div>
         </nav>
         
@@ -27,15 +29,19 @@ export default function RootLayout({ children }) {
         </main>
         
         <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-links">
-              <a href="/" className="footer-link">Home</a>
-              <a href="/about" className="footer-link">About</a>
-              <a href="/contact" className="footer-link">Contact</a>
-            </div>
-            <div className="footer-bottom">
-              <p>&copy; 2024 Walton Web Hosting. All rights reserved.</p>
-              <p>Empowering businesses with affordable hosting solutions.</p>
+          <div className="container">
+            <div className="footer-content">
+              <div className="footer-links">
+                <a href="/" className="footer-link">Home</a>
+                <a href="/about" className="footer-link">About</a>
+                <a href="/contact" className="footer-link">Contact</a>
+                <a href="#" className="footer-link">Privacy Policy</a>
+                <a href="#" className="footer-link">Terms of Service</a>
+              </div>
+              <div className="footer-bottom">
+                <p>&copy; 2024 Walton Web Hosting. All rights reserved.</p>
+                <p>Empowering businesses with affordable hosting solutions.</p>
+              </div>
             </div>
           </div>
         </footer>
