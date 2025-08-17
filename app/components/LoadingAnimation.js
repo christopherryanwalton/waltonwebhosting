@@ -15,12 +15,7 @@ export default function LoadingAnimation() {
     timers.push(setTimeout(() => setPhase(4), 1800))  // Data flow
     timers.push(setTimeout(() => setPhase(5), 2400))  // Ready
     timers.push(setTimeout(() => {
-      setIsComplete(true)
-      // Hide after fade completes
-      setTimeout(() => {
-        const wrapper = document.querySelector('.datacenter-loader')
-        if (wrapper) wrapper.style.display = 'none'
-      }, 800)
+      setIsComplete(true) // trigger fade-out via CSS
     }, 3000))
 
     return () => timers.forEach(timer => clearTimeout(timer))
