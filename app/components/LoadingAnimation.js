@@ -26,14 +26,13 @@ const bootLogs = [
 export default function LoadingAnimation() {
   const [currentLine, setCurrentLine] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
-  const [shouldShow, setShouldShow] = useState(true)
+  const [shouldShow, setShouldShow] = useState(false)
 
   useEffect(() => {
-    // ✅ Only show once per session
-    if (typeof window !== 'undefined' && sessionStorage.getItem('loaderShown')) {
-      setShouldShow(false)
-      return
-    }
+    if (typeof window === 'undefined') return
+    if (sessionStorage.getItem('loaderShown')) return
+
+    setShouldShow(true)
     sessionStorage.setItem('loaderShown', 'true')
 
     const timers = []
@@ -52,7 +51,7 @@ export default function LoadingAnimation() {
   if (!shouldShow) return null
 
   return (
-    <div className={`datacenter-loader ${isComplete ? 'complete' : ''}`}>
+    <div className={`datacenter-loader ${isComplete ? 'fade-out' : ''}`}>
       <div className="terminal-window">
         <div className="terminal-header">
           <span className="dot red"></span>
@@ -61,14 +60,12 @@ export default function LoadingAnimation() {
           <span className="terminal-title">REMOTE SESSION</span>
         </div>
         <div className="terminal-body">
-          {/* ASCII art prints instantly */}
           {asciiLogo.map((line, i) => (
             <div key={`logo-${i}`} className="terminal-line ascii-line">
               {line}
             </div>
           ))}
 
-          {/* Boot logs animate line by line */}
           {bootLogs.slice(0, currentLine).map((line, i) => (
             <div
               key={`log-${i}`}
